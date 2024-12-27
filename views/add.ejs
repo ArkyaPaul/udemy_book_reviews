@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Add</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+        <form method="post" action="/add">
+            <div class="container">
+                <input type="text" name="title" placeholder="Enter the name of your book" required class="titleItem">
+                <textarea type="text" name="review" rows="10" placeholder="Enter your review" class="reviewItem"></textarea>
+                <input type="number" name="rating" placeholder="Your your rating out of 10" max="10" class="ratingItem">
+                <button type="submit" class="buttonItem">OK</button>
+            </div> 
+        </form>
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>

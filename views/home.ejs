@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Home</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+     <div class="middle">
+        <div class="sort">
+            <form id="sortingOrderForm" action="/sortingWay" method="post">
+                <label>Sort By: </label>
+                <select id="selectSort" name="sortingOption" onchange="submitForm()">
+                    <option value="asc">A to Z</option>
+                    <option value="desc">Z to A</option>
+                    <option value="rate">Ratings</option>
+                </select>
+            </form> 
+        </div>
+        <div class="every-item">
+            <% database.forEach((elem)=>{ %>
+                <div class="book-item"> 
+                    <img src=<%= elem.cover_img %>.jpg alt="book cover image" class="book-img"/>
+                    <div class="book-details">
+                        <h4>Title: <%= elem.title %></h4>
+                        <h4>My Rating: <%= elem.rating %> /10</h4>
+                        <h5>My Review: <%= elem.review %></h5> 
+                        <input type="button" value="Edit" id="" onclick="window.location.href='/edit/<%= elem.book_id %>'">
+                    </div>
+                </div> 
+            <% }) %>
+        </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
+    <script>
+        function submitForm() {
+            document.getElementById('sortingOrderForm').submit();
+        }
+    </script>
+</body>
+</html>

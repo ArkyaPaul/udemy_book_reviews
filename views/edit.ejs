@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Edit</title>
+</head>
+<body>
+    <form action="/edit/<%= id %>" method="post">
+        <div class="editDiv">
+            <h3>Edit Review & Rating of : <%= data.title %></h3>
+            <span class="editReview">
+                <label for="review">Review:</label>  
+                <textarea id="review" name="review"><%= data.review %></textarea>
+            </span>
+            <span class="editRating">
+                <label for="rating">Rating:</label>
+                <input type="number" id="rating" name="rating" value="<%= data.rating %>">
+            </span>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+    <div class="deleteButton">
+        <!-- <button style="background-color: red;" onclick="deleteBook('<%= id %>')">Delete this Book</button> -->
+        <a href="/delete/<%= id %>" onclick="return confirm('Are you sure you want to delete this book?');">
+            <button style="background-color: red;">Delete this Book</button>
+        </a>
+    </div>
+    <%- include("partials/footer.ejs") %>
+    <!-- <script>
+        function deleteBook(id){
+            fetch(`/delete/${id}`,{
+                method:'DELETE'
+            }).then(res=>{
+                if(res.ok){
+                    window.location.href="/";
+                }
+            }).catch(err=>console.error('Error:',err));
+        }
+    </script> -->
+</body>
+</html>
